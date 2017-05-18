@@ -1,3 +1,8 @@
+[![Code Climate](https://codeclimate.com/github/IcaliaLabs/helios/badges/gpa.svg)](https://codeclimate.com/github/IcaliaLabs/helios)
+[![Test Coverage](https://codeclimate.com/github/IcaliaLabs/helios/badges/coverage.svg)](https://codeclimate.com/github/IcaliaLabs/helios/coverage)
+[![Issue Count](https://codeclimate.com/github/IcaliaLabs/helios/badges/issue_count.svg)](https://codeclimate.com/github/IcaliaLabs/helios)
+![Made with Love by Icalia Labs](https://img.shields.io/badge/With%20love%20by-Icalia%20Labs-ff3434.svg)
+
 # Helios::Bot
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/helios/bot`. To experiment with that code, run `bin/console` for an interactive prompt.
@@ -38,4 +43,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
