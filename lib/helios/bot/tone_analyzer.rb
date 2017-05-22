@@ -10,15 +10,7 @@ module Helios
                                       query: default_tone_options.merge(options))
 
         parsed_response = JSON.parse(response.body)
-
         Helios::Bot::DocumentTones.new(parsed_response)
-
-
-        #return parsed_response["languages"].map do |attrs|
-          #Hermes::Bot::Language.new(attrs)
-        #end if response.success?
-
-        #raise_exception(response.code, response.body)
       end
 
       private
