@@ -1,8 +1,13 @@
-# Helios::Bot
+[![Code Climate](https://codeclimate.com/github/IcaliaLabs/helios/badges/gpa.svg)](https://codeclimate.com/github/IcaliaLabs/helios)
+[![Test Coverage](https://codeclimate.com/github/IcaliaLabs/helios/badges/coverage.svg)](https://codeclimate.com/github/IcaliaLabs/helios/coverage)
+[![Issue Count](https://codeclimate.com/github/IcaliaLabs/helios/badges/issue_count.svg)](https://codeclimate.com/github/IcaliaLabs/helios)
+![Made with Love by Icalia Labs](https://img.shields.io/badge/With%20love%20by-Icalia%20Labs-ff3434.svg)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/helios/bot`. To experiment with that code, run `bin/console` for an interactive prompt.
+<div style="text-align:center">
+  <img src="assets/logo.png" width="980">
+</div>
 
-TODO: Delete this and the text above, and describe your gem
+Helios is an open source ruby gem that acts as a wrapper for IBM Watson's [Tone analyzer service API](https://www.ibm.com/watson/developercloud/tone-analyzer.html).
 
 ## Installation
 
@@ -22,7 +27,30 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Configuration
+
+In order for Helios to work correctly, it is important that you [set up an IBM Bluemix account of your own](https://console.ng.bluemix.net/) and that your trial period hasn't ended (or, for that matter, that you've registered for a paid account)
+
+First require the `helios-bot` in your file:
+
+```ruby
+require 'helios-bot'
+```
+
+Then add the following configuration block:
+
+```ruby
+
+Helios::Bot.configure do |config|
+	config.username = SOME_USERNAME
+	config.password = SOME_PASSWORD
+	config.base_uri = "https://gateway.watsonplatform.net/tone-analyzer/api/v3"
+end
+```
+
+**Note: The username and password are not your Bluemix credentials. These
+credentials are specific to the Tone Analyzer API and must
+be obtained from said section of Watson's Docs**
 
 ## Development
 
@@ -38,4 +66,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
