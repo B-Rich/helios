@@ -52,6 +52,22 @@ end
 credentials are specific to the Tone Analyzer API and must
 be obtained from said section of Watson's Docs**
 
+### Analyze a general tone
+
+In order to analyze a general tone, simply use the `Helios::Bot::ToneAnalyzer` class' tone method:
+
+```ruby
+Helios::Bot::ToneAnalyzer.tone("A word is dead when it is said, some say. Emily Dickinson")
+```
+
+`Helios::Bot::ToneAnalyzer.tone` method returns an instance of `Helios::Bot::DocumentTones`, an example of this can be seen below:
+
+```
+#<Helios::Bot::DocumentTones:0x007fbd03a31520 @raw=[{"tones"=>[{"score"=>0.253133, "tone_id"=>"anger", "tone_name"=>"Anger"}...], @tones=[#<Helios::Bot::Tone:0x007fbd03a314d0 @id="anger", @score=0.253133, @name="Anger">...]>
+```
+
+[Check Watson's API reference](https://www.ibm.com/watson/developercloud/natural-language-classifier/api/v1/#create_classifier) for details on how to use your own data in order to create a classifier.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
