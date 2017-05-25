@@ -1,12 +1,25 @@
 require 'spec_helper'
 
 describe Helios::Bot::ToneAnalyzer do
-  before :each do
-      stub_toneAnalyzer_response = ExampleToneResponse.new
-      allow(Helios::Bot::ToneAnalyzer).to receive(:post).and_return(stub_toneAnalyzer_response)
+
+  describe '.tone' do
+    before :each do
+        stub_tone_analyzer_response = ExampleToneResponse.new
+        allow(Helios::Bot::ToneAnalyzer).to receive(:post).and_return(stub_tone_analyzer_response)
+    end
+    it 'Should return Helios::Bot::DocumentTones instance' do
+      expect(Helios::Bot::ToneAnalyzer.tone("")).to be_kind_of(Helios::Bot::DocumentTones)
+    end
   end
-  it '.tone' do
-    expect(Helios::Bot::ToneAnalyzer.tone("")).to be_kind_of(Helios::Bot::DocumentTones)
+
+  describe '.engagement_tone' do
+    before :each do
+        stub_tone_analyzer_response = ExampleEngagementToneResponse.new
+        allow(Helios::Bot::ToneAnalyzer).to receive(:post).and_return(stub_tone_analyzer_response)
+    end
+    it 'Should return Helios::Bot::UtterancesTone instance' do
+      expect(Helios::Bot::ToneAnalyzer.engagement_tone("")).to be_kind_of(Helios::Bot::UtterancesTone)
+    end
   end
 end
 
@@ -46,6 +59,26 @@ class ExampleToneResponse
           }
         ]
       }
+    }'
+  end
+end
+
+class ExampleEngagementToneResponse
+  def body
+    '{
+      "utterances_tone": [
+      {
+        "utterance_id": "string",
+        "utterance_text": "string",
+        "tones": [
+          {
+            "tone_name": "string",
+            "tone_id": "string",
+            "score": 0
+          }
+        ]
+      }
+      ]
     }'
   end
 end
