@@ -1,3 +1,5 @@
+require "helios/bot/tone"
+
 module Helios
   module Bot
     class Utterance
@@ -6,8 +8,16 @@ module Helios
       def initialize(attrs = {})
         @id = attrs["utterance_id"]
         @text = attrs["utterance_text"]
-        @tones = attrs["tones"]
+        @tones = []
+        build_tones(attrs["tones"])
       end
+
+      def build_tones(tones)
+        tones.each do |tone|
+          @tones << Helios::Bot::Tone.new(tone)
+        end
+      end
+
     end
   end
 end

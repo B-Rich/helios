@@ -1,4 +1,5 @@
 require "helios/bot/document_tones"
+require "helios/bot/utterances_tone"
 require "helios/bot/tone"
 
 module Helios
@@ -19,6 +20,7 @@ module Helios
                                            query: default_tone_options)
 
         parsed_response = JSON.parse(response.body)
+        Helios::Bot::UtterancesTone.new(parsed_response)
       end
 
       private
