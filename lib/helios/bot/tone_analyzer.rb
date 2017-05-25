@@ -13,6 +13,14 @@ module Helios
         Helios::Bot::DocumentTones.new(parsed_response)
       end
 
+      def self.engagement_tone(text)
+        response = self.post("/tone_chat", body: text,
+                                           headers: { "Content-Type" => "application/json" },
+                                           query: default_tone_options)
+
+        parsed_response = JSON.parse(response.body)
+      end
+
       private
 
       def self.default_tone_options
