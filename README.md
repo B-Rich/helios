@@ -66,7 +66,20 @@ Helios::Bot::ToneAnalyzer.tone("A word is dead when it is said, some say. Emily 
 #<Helios::Bot::DocumentTones:0x007fbd03a31520 @raw=[{"tones"=>[{"score"=>0.253133, "tone_id"=>"anger", "tone_name"=>"Anger"}...], @tones=[#<Helios::Bot::Tone:0x007fbd03a314d0 @id="anger", @score=0.253133, @name="Anger">...]>
 ```
 
-[Check Watson's API reference](https://www.ibm.com/watson/developercloud/natural-language-classifier/api/v1/#create_classifier) for details on how to use your own data in order to create a classifier.
+### Analyze customer engagement tone
+
+
+In order to analyze a customer engagement tone, simply use the `Helios::Bot::ToneAnalyzer` class' engagement_tone method:
+
+```ruby
+Helios::Bot::ToneAnalyzer.engagement_tone('{ "utterances": [ { "text": "string", "user": "string" } ]}')
+```
+
+`Helios::Bot::ToneAnalyzer.engagement_tone` method returns an instance of `Helios::Bot::UtterancesTone`, an example of this can be seen below:
+
+```
+#<Helios::Bot::UtterancesTone:0x007fbeae13fe10 @raw={"utterances_tone"=>[{"utterance_id"=>0, "utterance_text"=>"string", "tones"=>[]}]}, @utterances=[#<Helios::Bot::Utterance:0x007fbeae13fca8 @id=0, @text="string", @tones=[]>]>
+```
 
 ## Development
 
