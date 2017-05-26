@@ -3,11 +3,11 @@
 [![Issue Count](https://codeclimate.com/github/IcaliaLabs/helios/badges/issue_count.svg)](https://codeclimate.com/github/IcaliaLabs/helios)
 ![Made with Love by Icalia Labs](https://img.shields.io/badge/With%20love%20by-Icalia%20Labs-ff3434.svg)
 
-# Helios::Bot
+<div style="text-align:center">
+  <img src="assets/logo.png" width="980">
+</div>
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/helios/bot`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Helios is an open source ruby gem that acts as a wrapper for IBM Watson's [Tone analyzer service API](https://www.ibm.com/watson/developercloud/tone-analyzer.html).
 
 ## Installation
 
@@ -27,7 +27,46 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Configuration
+
+In order for Helios to work correctly, it is important that you [set up an IBM Bluemix account of your own](https://console.ng.bluemix.net/) and that your trial period hasn't ended (or, for that matter, that you've registered for a paid account)
+
+First require the `helios-bot` in your file:
+
+```ruby
+require 'helios-bot'
+```
+
+Then add the following configuration block:
+
+```ruby
+
+Helios::Bot.configure do |config|
+	config.username = SOME_USERNAME
+	config.password = SOME_PASSWORD
+	config.base_uri = "https://gateway.watsonplatform.net/tone-analyzer/api/v3"
+end
+```
+
+**Note: The username and password are not your Bluemix credentials. These
+credentials are specific to the Tone Analyzer API and must
+be obtained from said section of Watson's Docs**
+
+### Analyze a general tone
+
+In order to analyze a general tone, simply use the `Helios::Bot::ToneAnalyzer` class' tone method:
+
+```ruby
+Helios::Bot::ToneAnalyzer.tone("A word is dead when it is said, some say. Emily Dickinson")
+```
+
+`Helios::Bot::ToneAnalyzer.tone` method returns an instance of `Helios::Bot::DocumentTones`, an example of this can be seen below:
+
+```
+#<Helios::Bot::DocumentTones:0x007fbd03a31520 @raw=[{"tones"=>[{"score"=>0.253133, "tone_id"=>"anger", "tone_name"=>"Anger"}...], @tones=[#<Helios::Bot::Tone:0x007fbd03a314d0 @id="anger", @score=0.253133, @name="Anger">...]>
+```
+
+[Check Watson's API reference](https://www.ibm.com/watson/developercloud/natural-language-classifier/api/v1/#create_classifier) for details on how to use your own data in order to create a classifier.
 
 ## Development
 
